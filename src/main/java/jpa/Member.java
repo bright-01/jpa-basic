@@ -12,6 +12,13 @@ public class Member {
     @Column(name="name") //@Column(name="name") 으로 테이블의 컬럼을 매핑할 수 도 있음.. 없으면 변수명으로 컬럼 매핑
     private String name;
 
+    // JPA에서는 기본 생성자가 있어야 한다
+    public Member() {}
+
+    public Member(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
 
     public long getId() {
         return id;
