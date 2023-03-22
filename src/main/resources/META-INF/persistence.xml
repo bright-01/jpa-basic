@@ -18,6 +18,9 @@
             <property name="hibernate.format_sql" value="true"/>
             <!-- Comment 확인 여부 -->
             <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!--  서버가 기동 될때 Entitiy에 맞는 테이블 스키마를 자동 생성한다..  -->
+<!--            <property name="hibernate.hbm2ddl.auto" value="create"/>-->
         </properties>
     </persistence-unit>
 </persistence>
