@@ -169,4 +169,34 @@ public class MemberCRUD {
 
     }
 
+    public void 준영속상태(long id, String name){
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
+        EntityManager em = emf.createEntityManager();
+        // 디비작업.. 일관적인 작업 ( 트랜젝션 )을 할 때는 꼭 EntityManager를 만들어야 한다.
+
+        // 트랜젝션을 가져온다
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        try{
+
+            // 영속상태 ( JPA 에서 관리 함 )
+            Member findMember = em.find(Member.class, id); // 클래스 이름, key
+            findMember.setName("AAA");
+            // 준영속 상태 ( 더 이상 findMember 은 JPA에서 관리 하지 않음 )
+            em.detach(findMember);
+
+            em.clear();// 영속성 컨텍스트의 캐시를 통으로 지워 버린다... commit해도 쿼리가 발생 하지 않음
+            em.close(); // 영속성 컨텍스트를 닫음.
+
+            tx.commit(); // commit를 해도 select는 실행되지만 detach로 비영속 상태가 되면서 update는 실행되지 않는다.
+        }catch (Exception e){
+            tx.rollback();
+        }finally {
+            em.close();
+        }
+        emf.close();
+
+    }
+
 }
