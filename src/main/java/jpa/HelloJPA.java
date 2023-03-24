@@ -14,7 +14,11 @@ public class HelloJPA {
 //        new MemberCRUD().updateMember(1, "HelloA-2");
 
         // 조회
-        new MemberCRUD().jpqlSelect();
+//        new MemberCRUD().jpqlSelect();
+
+        new Member2CRUD().findMember2(100);
+
+
 
     }
 }
