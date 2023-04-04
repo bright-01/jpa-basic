@@ -16,7 +16,7 @@ public class FlushEx {
 
         try{
 
-            Member member = new Member(200L, "member200");
+            Member1 member = new Member1(200L, "member200");
             em.persist(member);
 
             // flush를 하는 순간에 데이터 저장

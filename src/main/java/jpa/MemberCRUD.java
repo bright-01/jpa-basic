@@ -20,7 +20,7 @@ public class MemberCRUD {
         tx.begin();
 
         try{
-            Member member = new Member();
+            Member1 member = new Member1();
             member.setId(id);
             member.setName(name);
             // 저장
@@ -49,7 +49,7 @@ public class MemberCRUD {
         try{
 
             //조회
-            Member member = em.find(Member.class, id); // 클래스 이름, key
+            Member1 member = em.find(Member1.class, id); // 클래스 이름, key
             System.out.println("member.getId() " + member.getId());
             System.out.println("member.getName() " + member.getName());
 
@@ -103,12 +103,12 @@ public class MemberCRUD {
 
         try{
 
-            List<Member> memberList = em.createQuery("SELECT m FROM member as m", Member.class)
+            List<Member1> memberList = em.createQuery("SELECT m FROM member as m", Member1.class)
                     .setFirstResult(5)
                     .setMaxResults(8)
                     .getResultList();
 
-            for (Member member : memberList) {
+            for (Member1 member : memberList) {
                 System.out.println("member = " + member.getName());
             }
 
@@ -133,7 +133,7 @@ public class MemberCRUD {
 
         try{
 
-            Member member = new Member();
+            Member1 member = new Member1();
             member.setId(id);
             member.setName("JPATEST");
 
@@ -145,14 +145,14 @@ public class MemberCRUD {
             //조회
             // 트랜젝션을 생성하고 perist로 실행 하면 1차 캐시에 데이터가 저장되고 캐시에서 조회를 하게 된다. 그래서 find 할때 sql이 발생 되지 않는다..
             // 같은 것을 2번 조회 할 때 역시 영속성 컨텍스트에 1차 캐시에 저장 되서 sql을 2번 조회 하지 않음
-            Member findMember = em.find(Member.class, id); // 클래스 이름, key
+            Member1 findMember = em.find(Member1.class, id); // 클래스 이름, key
             System.out.println("findMember.getId() " + findMember.getId());
             System.out.println("findMember.getName() " + findMember.getName());
 
 
             // 영속 엔티티의 동일성 보장
-            Member findMember1 = em.find(Member.class, id); // 클래스 이름, key
-            Member findMember2 = em.find(Member.class, id); // 클래스 이름, key
+            Member1 findMember1 = em.find(Member1.class, id); // 클래스 이름, key
+            Member1 findMember2 = em.find(Member1.class, id); // 클래스 이름, key
             System.out.println("result = " + (findMember1 == findMember2));
 
 
@@ -181,7 +181,7 @@ public class MemberCRUD {
         try{
 
             // 영속상태 ( JPA 에서 관리 함 )
-            Member findMember = em.find(Member.class, id); // 클래스 이름, key
+            Member1 findMember = em.find(Member1.class, id); // 클래스 이름, key
             findMember.setName("AAA");
             // 준영속 상태 ( 더 이상 findMember 은 JPA에서 관리 하지 않음 )
             em.detach(findMember);

@@ -6,8 +6,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="member") // name="" 을 통해서 매핑 테이블을 수동으로 정할 수 있다.. 없으면 클래스 이름으로 테이블이 매핑
-public class Member {
+@Table(name="member1") // name="" 을 통해서 매핑 테이블을 수동으로 정할 수 있다.. 없으면 클래스 이름으로 테이블이 매핑
+public class Member1 {
 
     @Id
     @Column(unique = true, length = 10)
@@ -16,9 +16,9 @@ public class Member {
     private String name;
 
     // JPA에서는 기본 생성자가 있어야 한다
-    public Member() {}
+    public Member1() {}
 
-    public Member(long id, String name) {
+    public Member1(long id, String name) {
         this.id = id;
         this.name = name;
     }
